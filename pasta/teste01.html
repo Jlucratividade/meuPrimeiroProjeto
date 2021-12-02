@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>01 Prateleira</title>
+	<style type="text/css">
+
+	body{
+		background-color: rgb(71, 71, 133);
+		margin: 0 auto;
+	}
+		
+	.i {
+		float: left;
+		width: 16px;
+		height: 16px;
+		border: 1px solid black;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	img {
+		height: 100px;
+		width: 100px;
+	}
+
+	</style>
+
+</head>
+<body>
+
+
+	<main id="idmain" mv-storage="kkk">		
+			<article   >
+				<img src="https://www.praiasdenatal.com.br/wp-content/uploads/2014/09/cuscuz2.jpg" name="Cuscus Temperado" data-titulo="Cuscus Temperado" data-preco="5.50" data-src="https://www.praiasdenatal.com.br/wp-content/uploads/2014/09/cuscuz2.jpg" ><span property="name"  class="">Cuscus Temperado</span>
+                <button  ><span    content="5.50">5.50</span></button>
+            </article>
+            <article   >
+            	<img src="https://2.bp.blogspot.com/-Uquu1oVarh0/TWG2UlvCpaI/AAAAAAAAAc0/AwExQWy12C8/s320/MUNGUZA.jpg" name="MUNGUZA" data-titulo="MUNGUZA" data-preco="14.99" data-src="https://2.bp.blogspot.com/-Uquu1oVarh0/TWG2UlvCpaI/AAAAAAAAAc0/AwExQWy12C8/s320/MUNGUZA.jpg" >
+                <span property="name"  class="">Mucunzá</span>
+                <button  ><span    content="14.99">14.99</span></button>
+            </article>
+            <article   >
+            	<img src="https://www.bernardoalimentos.com.br/noticias/paodequeiijo2021-04-29_10-41-00.png" name="Pão de Queijo" data-titulo="Pão de Queijo" data-preco="156.99" data-src="https://www.bernardoalimentos.com.br/noticias/paodequeiijo2021-04-29_10-41-00.png" >
+            	<span property="name"  class="">Pão de Queijo</span>
+                <button  ><span    content="156.99">156.99</span></button>
+            </article>
+	</main>
+
+
+	<form style="position: relative !important; float: left !important;" id="meuForm" action="xxx" method="post" target="_blank">
+            <h1>Seu Carrinho</h1>
+
+            <table id="idtable">
+
+
+                <colgroup>
+                    <col class="remove" />
+                    <col class="product" />
+                    <col class="quantity" />
+                    <col  />
+                    <col class="subtotal" />
+                </colgroup>
+
+
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Produtos</th>
+                        <th>Quantidades</th>
+                        <th>Preços</th>
+                        <th>Subtotais</th>
+                    </tr>
+                </thead>
+
+
+                <tbody id="idteste">
+                    <tr id="idtr">
+           
+                    </tr>
+                    <tr>
+                        <td colspan="4" id="idcarrinhovazio">(Carrinho está vazio!)</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total</td>
+                        <td id="idtotal">R$ 0,00</td>
+                    </tr>
+                </tfoot>
+
+
+            </table>
+
+            <a target="_blank" onclick="enviaTexto()" id="meuLink" href="" class="xxx">Envie Pedido para o WhatsApp</a>
+    </form>
+
+        
+	
+    <script>
+		var total = 0;
+
+        function trabalhos(){
+
+        	function atualizarTotal() {
+        		total = 0;
+        		document.getElementById("idtotal").innerHTML="";
+	                document.querySelectorAll('p').forEach(p_de_td => {
+						total += Number.parseFloat(p_de_td.innerText);
+						document.getElementById("idtotal").innerHTML = total.toFixed(2);
+					});
+					if(total != 0){
+						document.getElementById("idcarrinhovazio").innerHTML="";
+						document.querySelector("#idtable > thead > tr").innerHTML =`<tr>
+                        <th></th>
+                        <th>Produtos</th>
+                        <th>Quantidades</th>
+                        <th>Preços</th>
+                        <th>Subtotais</th>
+                    </tr>`;
+					}else{
+						document.getElementById("idcarrinhovazio").innerHTML="(Carrinho está vazio!)";
+						document.getElementById("idtotal").innerHTML = "R$ 0,00";
+						document.querySelector("#idtable > thead > tr").innerHTML =``;
+					}
+        	}
+
+        	function seQdadeEhZero(){
+        		if(event.target.parentElement.parentElement.parentElement.children[4].innerHTML == 0){
+        			event.target.parentElement.parentElement.parentElement.innerHTML = ``;
+        		}
+        	}
+
+            document.getElementById("idmain").addEventListener("click", event => {     
+            var preco = Number.parseFloat(event.target.parentNode.children[2].textContent);
+            const clickedElement = event.target;
+            if(clickedElement.tagName === 'IMG'){
+                document.getElementById("idteste").innerHTML +=`
+                	<tr>
+                        <td><button type="button">❌</button></td>
+                        <td>`+clickedElement.dataset.titulo+`</td>
+                        <td style="width: 50px;height: 15px; border: 1px solid black;" ><div id="p1" >
+                        	<div class="i e" > - </div><div class="i m" > 1 </div><div class="i d" > + </div></div>		</td>
+                        <td>`+Number.parseFloat(clickedElement.dataset.preco)+`</td>
+                        <td><p>`+1*preco+`</p></td>
+                    </tr>`;
+                }
+                atualizarTotal();
+            });
+	        document.getElementsByTagName("form")[0].addEventListener("click", event => {
+	            
+	            if(event.target.tagName === 'BUTTON'){
+	                event.target.parentElement.parentElement.remove();
+
+	                atualizarTotal();
+	                	
+	            }
+
+	        });
+
+			document.getElementById("idtable").addEventListener("click", event => {
+
+				total = 0;
+
+				if(event.target.tagName === 'DIV'){
+				var el_car_subtotal = event.target.parentElement.parentElement.parentElement.children[4];
+				var el_car_subtotal_valor = Number.parseFloat(el_car_subtotal.textContent);
+				el_car_preco = event.target.parentElement.parentElement.parentElement.children[3];
+				el_car_preco_valor = Number.parseFloat(event.target.parentElement.parentElement.parentElement.children[3].textContent);
+				var pai_div_controle = event.target.parentNode;
+				var v = pai_div_controle.childNodes[2].innerText;
+				v = new Number(v);
+
+				if(event.target.className === "i d"){
+					v += 1;
+					pai_div_controle.childNodes[2].innerHTML = v;
+					el_car_subtotal.innerHTML = `<td>R$ <p>`+(v * el_car_preco_valor).toFixed(2)+`</p></td>`;
+				}else if(event.target.className === "i e"){
+					if(v>0){
+						v -= 1;
+						pai_div_controle.childNodes[2].innerHTML = v;
+						el_car_subtotal.innerHTML = `<td>R$ <p>`+(v * el_car_preco_valor).toFixed(2)+`</p></td>`;
+						if(event.target.parentElement.parentElement.parentElement.children[4].innerHTML == `R$ <p>0.00</p>`){
+							event.target.parentElement.parentElement.parentElement.innerHTML = ``;
+						}
+					}			
+				}
+				}
+
+				
+
+				atualizarTotal();
+				
+			});
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        window.addEventListener("load",trabalhos);
+
+    </script>
+            
+<script>
+
+
+            function enviaTexto() {
+                var texto = document.querySelector("#meuForm > table").innerText;
+                while (texto.indexOf("❌") != -1) {
+                    texto = texto.replace("❌", "%E2%9D%8C");
+                }
+                //while(texto.indexOf("\t") != -1){texto = texto.replace("\t"," ") }
+                while (texto.indexOf("  ") != -1) {
+                    texto = texto.replace("  ", " ");
+                }
+                while (texto.indexOf("\n") != -1) {
+                    texto = texto.replace("\n", "%0A");
+                }
+                while (texto.indexOf(",") != -1) {
+                    texto = texto.replace(",", "%2C");
+                }
+                while (texto.indexOf("=") != -1) {
+                    texto = texto.replace("=", "%3D");
+                }
+                while (texto.indexOf("?") != -1) {
+                    texto = texto.replace("?", "%3F");
+                }
+                while (texto.indexOf(":") != -1) {
+                    texto = texto.replace(":", "%3A");
+                }
+                while (texto.indexOf("ç") != -1) {
+                    texto = texto.replace("ç", "%C3%A7");
+                }
+
+                //while(texto.indexOf("%E2%9D%8C") != -1){texto = texto.replace("%E2%9D%8C","") }
+
+                //while(texto.indexOf("\n") != -1){texto = texto.replace("\n","%0A")}
+                while (texto.indexOf("\t") != -1) {
+                    texto = texto.replace("\t", "%09");
+                }
+                while (texto.indexOf(" ") != -1) {
+                    texto = texto.replace(" ", "%20");
+                }
+                //while(texto.indexOf("\"") != -1){texto = texto.replace("\"","%22")}
+                //while(texto.indexOf("#") != -1){texto = texto.replace("#","%23")}
+                while (texto.indexOf("$") != -1) {
+                    texto = texto.replace("$", "%24");
+                }
+                //while(texto.indexOf("%") != -1){texto = texto.replace("%","%25")}
+                //while(texto.indexOf("&") != -1){texto = texto.replace("&","%26")}
+                //while(texto.indexOf("\'") != -1){texto = texto.replace("\'","'")}
+                //while(texto.indexOf("+") != -1){texto = texto.replace("+","%2B")}
+                //while(texto.indexOf(",") != -1){texto = texto.replace(",","%2C")}
+                //while(texto.indexOf("\/") != -1){texto = texto.replace("/","%2F")}
+                //while(texto.indexOf(":") != -1){texto = texto.replace(":","%3A")}
+                //while(texto.indexOf(";") != -1){texto = texto.replace(";","%3B")}
+                //while(texto.indexOf("<") != -1){texto = texto.replace("<","%3C")}
+                //while(texto.indexOf("=") != -1){texto = texto.replace("=","%3D")}
+                //while(texto.indexOf(">") != -1){texto = texto.replace(">","%3E")}
+                //while(texto.indexOf("?") != -1){texto = texto.replace("?","%3F")}
+                //while(texto.indexOf("@") != -1){texto = texto.replace("@","%40")}
+                //while(texto.indexOf("[") != -1){texto = texto.replace("[","%5B")}
+                //while(texto.indexOf("\\") != -1){texto = texto.replace("\\","%5C")}
+                //while(texto.indexOf("]") != -1){texto = texto.replace("]","%5D")}
+                //while(texto.indexOf("^") != -1){texto = texto.replace("^","%5E")}
+                //while(texto.indexOf("`") != -1){texto = texto.replace("`","%60")}
+                //while(texto.indexOf("{") != -1){texto = texto.replace("{","%7B")}
+                //while(texto.indexOf("|") != -1){texto = texto.replace("|","%7C")}
+                //while(texto.indexOf("}") != -1){texto = texto.replace("}","%7D")}
+
+                //texto = texto.replace("Total","*Total*");
+                //document.querySelector(".FKF6mc").href="https://www.bairroplanalto.tk";
+
+                document.querySelector("#meuLink").href = "https://api.whatsapp.com/send?phone=5584986666666&text=" + texto;
+                //while(texto.indexOf(" ")!=-1){texto=texto.replace(" ","%20")}
+                //document.getElementById("vdiv").innerText = "https://api.whatsapp.com/send?phone=5584986666666&text="+texto;
+            }
+        </script>
+    <script type="text/javascript">
+
+		
+
+	</script>
+
+
+</body>
+</html>
