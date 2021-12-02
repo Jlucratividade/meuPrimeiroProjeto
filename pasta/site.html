@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--<script src="https://get.mavo.io/mavo.es5.min.js"></script>-->
+        <script src="js/mavo.es5.min.js"></script>
+        <link rel="stylesheet" href="css/styles2.css">
+
+
+
+        
+<script>
+
+
+            function enviaTexto() {
+                var texto = document.querySelector("#meuForm > table").innerText;
+                while (texto.indexOf("❌") != -1) {
+                    texto = texto.replace("❌", "%E2%9D%8C");
+                }
+                //while(texto.indexOf("\t") != -1){texto = texto.replace("\t"," ") }
+                while (texto.indexOf("  ") != -1) {
+                    texto = texto.replace("  ", " ");
+                }
+                while (texto.indexOf("\n") != -1) {
+                    texto = texto.replace("\n", "%0A");
+                }
+                while (texto.indexOf(",") != -1) {
+                    texto = texto.replace(",", "%2C");
+                }
+                while (texto.indexOf("=") != -1) {
+                    texto = texto.replace("=", "%3D");
+                }
+                while (texto.indexOf("?") != -1) {
+                    texto = texto.replace("?", "%3F");
+                }
+                while (texto.indexOf(":") != -1) {
+                    texto = texto.replace(":", "%3A");
+                }
+                while (texto.indexOf("ç") != -1) {
+                    texto = texto.replace("ç", "%C3%A7");
+                }
+
+                //while(texto.indexOf("%E2%9D%8C") != -1){texto = texto.replace("%E2%9D%8C","") }
+
+                //while(texto.indexOf("\n") != -1){texto = texto.replace("\n","%0A")}
+                while (texto.indexOf("\t") != -1) {
+                    texto = texto.replace("\t", "%09");
+                }
+                while (texto.indexOf(" ") != -1) {
+                    texto = texto.replace(" ", "%20");
+                }
+                //while(texto.indexOf("\"") != -1){texto = texto.replace("\"","%22")}
+                //while(texto.indexOf("#") != -1){texto = texto.replace("#","%23")}
+                while (texto.indexOf("$") != -1) {
+                    texto = texto.replace("$", "%24");
+                }
+                //while(texto.indexOf("%") != -1){texto = texto.replace("%","%25")}
+                //while(texto.indexOf("&") != -1){texto = texto.replace("&","%26")}
+                //while(texto.indexOf("\'") != -1){texto = texto.replace("\'","'")}
+                //while(texto.indexOf("+") != -1){texto = texto.replace("+","%2B")}
+                //while(texto.indexOf(",") != -1){texto = texto.replace(",","%2C")}
+                //while(texto.indexOf("\/") != -1){texto = texto.replace("/","%2F")}
+                //while(texto.indexOf(":") != -1){texto = texto.replace(":","%3A")}
+                //while(texto.indexOf(";") != -1){texto = texto.replace(";","%3B")}
+                //while(texto.indexOf("<") != -1){texto = texto.replace("<","%3C")}
+                //while(texto.indexOf("=") != -1){texto = texto.replace("=","%3D")}
+                //while(texto.indexOf(">") != -1){texto = texto.replace(">","%3E")}
+                //while(texto.indexOf("?") != -1){texto = texto.replace("?","%3F")}
+                //while(texto.indexOf("@") != -1){texto = texto.replace("@","%40")}
+                //while(texto.indexOf("[") != -1){texto = texto.replace("[","%5B")}
+                //while(texto.indexOf("\\") != -1){texto = texto.replace("\\","%5C")}
+                //while(texto.indexOf("]") != -1){texto = texto.replace("]","%5D")}
+                //while(texto.indexOf("^") != -1){texto = texto.replace("^","%5E")}
+                //while(texto.indexOf("`") != -1){texto = texto.replace("`","%60")}
+                //while(texto.indexOf("{") != -1){texto = texto.replace("{","%7B")}
+                //while(texto.indexOf("|") != -1){texto = texto.replace("|","%7C")}
+                //while(texto.indexOf("}") != -1){texto = texto.replace("}","%7D")}
+
+                //texto = texto.replace("Total","*Total*");
+                //document.querySelector(".FKF6mc").href="https://www.bairroplanalto.tk";
+
+                document.querySelector("#meuLink").href = "https://api.whatsapp.com/send?phone=5584986666666&text=" + texto;
+                //while(texto.indexOf(" ")!=-1){texto=texto.replace(" ","%20")}
+                //document.getElementById("vdiv").innerText = "https://api.whatsapp.com/send?phone=5584986666666&text="+texto;
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    <body>
+        <div style="position: relative !important; float: left !important;" mv-app="eshop" mv-storage="kkk" mv-bar="no-login">
+            <div class="mv-bar mv-ui"><!--mv-status--><!--mv-edit--><!--mv-save--><!--mv-logout--></div>
+            <h1>Produtos / Serviços da Loja</h1>
+
+            <article property="product" mv-multiple="" typeof="Item">
+                <img style="grid-row-end: span 2;
+                width: 100px;
+                height: 100px;
+                object-fit: cover;" property="image" alt="" aria-label="Image" src="https://www.praiasdenatal.com.br/wp-content/uploads/2014/09/cuscuz2.jpg" class="" /> <span property="name" aria-label="Name" class="">Cuscus Temperado</span>
+                <button mv-action="add(product, cart.product)" class="add-to-cart"><span property="amount" class="price" aria-label="Amount" datatype="number" content="13.99">13,99</span></button>
+            </article>
+            <article property="product" mv-multiple="" typeof="Item">
+                <img property="image" alt="" aria-label="Image" src="https://2.bp.blogspot.com/-Uquu1oVarh0/TWG2UlvCpaI/AAAAAAAAAc0/AwExQWy12C8/s320/MUNGUZA.jpg" class="" />
+                <span property="name" aria-label="Name" class="">Mucunzá</span>
+                <button mv-action="add(product, cart.product)" class="add-to-cart"><span property="amount" class="price" aria-label="Amount" datatype="number" content="14.99">14,99</span></button>
+            </article>
+            <article property="product" mv-multiple="" typeof="Item">
+                <img property="image" alt="" aria-label="Image" src="https://www.bernardoalimentos.com.br/-/assets/images/fa-1-336x336.png" class="" /> <span property="name" aria-label="Name" class="">Farofa Pronta</span>
+                <button mv-action="add(product, cart.product)" class="add-to-cart"><span property="amount" class="price" aria-label="Amount" datatype="number" content="15654.99">15654.99</span></button>
+            </article>
+
+            <footer></footer>
+        </div>
+
+        <form
+            style="position: relative !important; float: left !important;"
+            id="meuForm"
+            action="xxx"
+            method="post"
+            target="_blank"
+            mv-app="cart"
+            mv-storage="local"
+            mv-autosave="0"
+            mv-mode="read"
+            typeof="Item"
+            mv-permissions="read save edit add delete"
+            class=""
+            style=""
+        >
+            <div class="mv-bar mv-ui"><!--mv-status--><!--mv-edit--><!--mv-save--><!--mv-login--><!--mv-logout--></div>
+            <h1>Seu Carrinho</h1>
+
+            <!-- required by PayPal -->
+            <input type="hidden" name="cmd" value="_cart" />
+            <input type="hidden" name="upload" value="1" />
+            <input type="hidden" name="business" value="actions@mavo.io" />
+            <!-- Sandbox account -->
+            <input type="hidden" name="currency_code" value="BRL" />
+
+            <table>
+                <colgroup>
+                    <col class="remove" />
+                    <col class="product" />
+                    <col class="quantity" />
+                    <col class="price" />
+                    <col class="subtotal" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Produtos</th>
+                        <th>Quantidades</th>
+                        <th>Preços</th>
+                        <th>Subtotais</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr property="product" mv-multiple="" mv-initial-items="0" typeof="Item">
+                        <!-- Anything with a name attribute is sent to PayPal -->
+                        <td><button type="button" title="Remove from cart" mv-action="delete(product)" class="remove">❌</button></td>
+                        <td property="name" aria-label="Name" class="">Se esta frase esta aparecendo ALGO NÃO DEU CERTO!</td>
+                        <td><input type="number" property="quantity" value="1" min="1" name="quantity_1" datatype="number" mv-mode="edit" aria-label="Quantity" class="" /></td>
+                        <td class="price" property="amount" aria-label="Amount" datatype="number" content="0.00">0,00</td>
+                        <td>
+                            <span property="subtotal" class="price">[amount * quantity]</span>
+                            <input type="hidden" name="item_name_[R$index + 1]" value="[name]" />
+                            <input type="hidden" name="amount_[R$index + 1]" value="[amount]" />
+                        </td>
+                    </tr>
+                    <tr mv-if="count(product) = 0" class="empty-cart-message">
+                        <td colspan="4">(Carrinho está vazio!)</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total</td>
+                        <td class="price">[sum(subtotal)]</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <a target="_blank" onclick="enviaTexto()" id="meuLink" href="" class="xxx">Envie Pedido para o WhatsApp</a>
+        </form>
+
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
